@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="task-container">
+        <div class="headingdiv">
+            <img src="https://cdn-icons-png.flaticon.com/128/7246/7246748.png" >
+            <h1>To Do list</h1>
+        </div>
+        <form action="/creat-task" method="post">
+            <input type="text" name="taskname" class="taskname">
+            <button type="submit" class="addbutton">Add</button>
+ 
+        </form>
+
+        <p>(<%=task_list.length%>) Total Tasks</p>
+
+        <ul>
+            <% for (let i of task_list) {%>
+                <li class="tasklist">
+                    <div class="checkboxdiv">
+                        <input type="checkbox" class="checkbox">
+                    </div>
+                    <div class="tasknamediv">
+                        <label class="input"><%= i.taskname %></label>
+                    </div>
+                    <div class="deletediv">
+                        <a href="/delete-task/?id=<%= i._id %>">
+                        <button class="delete deletebutton" >x</button></a>
+                    </div>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>
